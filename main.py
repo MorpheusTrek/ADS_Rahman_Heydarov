@@ -1,4 +1,5 @@
 from modules.graph_module import GraphModule
+from modules.stack_queue_module import Stack, Queue
 
 def main():
     while True:
@@ -59,10 +60,46 @@ def searching_operations():
     pass
 
 def stack_operations():
-    pass
+    stack = Stack()
+    print("\nStack Operations")
+    print("1. Push")
+    print("2. Pop")
+    print("3. Display Stack")
+    action = input("Select an action (1-3): ")
+
+    if action == "1":
+        try:
+            value = int(input("Enter value to push: "))
+            stack.push(value)
+        except ValueError:
+            print("Error: Invalid input. Please enter an integer value.")
+    elif action == "2":
+        stack.pop()
+    elif action == "3":
+        stack.display()
+    else:
+        print("Invalid choice.")
 
 def queue_operations():
-    pass
+    queue = Queue()
+    print("\nQueue Operations")
+    print("1. Enqueue")
+    print("2. Dequeue")
+    print("3. Display Queue")
+    action = input("Select an action (1-3): ")
+
+    if action == "1":
+        try:
+            value = int(input("Enter value to enqueue: "))
+            queue.enqueue(value)
+        except ValueError:
+            print("Error: Invalid input. Please enter an integer value.")
+    elif action == "2":
+        queue.dequeue()
+    elif action == "3":
+        queue.display()
+    else:
+        print("Invalid choice.")
 
 def performance_benchmarking():
     pass
