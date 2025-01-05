@@ -1,5 +1,7 @@
 from modules.graph_module import GraphModule
 from modules.stack_queue_module import Stack, Queue
+from modules.data_operations_module import DataOperations
+from modules.performance_module import Performance
 
 def main():
     while True:
@@ -54,10 +56,37 @@ def graph_operations():
         print("Invalid choice.")
 
 def sorting_operations():
-    pass
+    data_ops = DataOperations()
+    print("\nSorting Operations")
+    print("1. Merge Sort")
+    print("2. Quick Sort")
+    print("3. Heap Sort")
+    algorithm_map = {"1": "merge", "2": "quick", "3": "heap"}
+    choice = input("Select a sorting algorithm (1-3): ")
+
+    if choice in algorithm_map:
+        file_path = input("Enter the dataset file path: ")
+        data_ops.sort_file(file_path, algorithm_map[choice])
+    else:
+        print("Invalid choice.")
 
 def searching_operations():
-    pass
+    data_ops = DataOperations()
+    print("\nSearching Operations")
+    print("1. Binary Search")
+    print("2. Linear Search")
+    algorithm_map = {"1": "binary", "2": "linear"}
+    choice = input("Select a search algorithm (1-2): ")
+
+    if choice in algorithm_map:
+        file_path = input("Enter the dataset file path: ")
+        try:
+            value = int(input("Enter the value to search for: "))
+            data_ops.search_file(file_path, algorithm_map[choice], value)
+        except ValueError:
+            print("Error: Please enter a valid integer value.")
+    else:
+        print("Invalid choice.")
 
 def stack_operations():
     stack = Stack()
@@ -102,7 +131,11 @@ def queue_operations():
         print("Invalid choice.")
 
 def performance_benchmarking():
-    pass
+    perf = Performance()
+    print("\nPerformance Benchmarking")
+    algorithm = input("Enter the sorting algorithm for benchmarking: ")
+    perf.run_benchmark("sort", algorithm)
+
 
 if __name__ == "__main__":
     main()
